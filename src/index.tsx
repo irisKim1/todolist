@@ -5,6 +5,7 @@ import './index.css'
 import reportWebVitals from './reportWebVitals'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+// if (!root) throw new Error('Failed to find the root element')
 root.render(
   <React.StrictMode>
     <App />
