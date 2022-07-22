@@ -1,13 +1,14 @@
+import todo from './Todo.module.css'
+import TodoItem from './TodoItem'
+
 const TodoList = () => {
-  // const [input, setInput] =useState<string|null>(null)
-  // const [check, setCheck] =useState<boolean>(false)
-  // const [remove, setRemove] =useState<boolean>(false)
+  const todoList: [] = []
 
-  // const todoInput = useCallback((e:Event) => {
-  //   , [input]
-  // })
-
-  return
+  return (
+    <div className={todo.listBlock}>
+      <TodoItem inputList={todoList} />
+    </div>
+  )
 }
 
 export default TodoList

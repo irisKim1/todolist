@@ -1,70 +1,73 @@
-import { useCallback, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { MdAdd } from 'react-icons/md'
 import todo from './Todo.module.css'
+import TodoItem from './TodoItem'
 
-interface IList {
-  type: string
-  todo: {
-    id: number
-    text: string | null
-    done: boolean
-  }
+export interface IList {
+  id: number
+  text: string | null
+  done: boolean
 }
 const TodoCreate = () => {
   const [open, setOpen] = useState<boolean>(false)
-  const [value, setValue] = useState<string>('')
+  const [list, setList] = useState<[]>([])
 
   const listId = useRef<number>(0)
+  let inputList: IList[] = list
+  const onToggle = () => {
+    setOpen(!open)
+  }
 
-  let inputItems: string[] = []
-  let inputList: IList[]
-
-  const onToggle = (e: any) => setOpen(!open)
-  const onChange = (e: any) => setValue(value)
-
-  const onSubmit = useCallback(
-    (e: any) => {
+  const onSubmit = (e: any) => {
+    e.preventDefault()
+    const doc = document as any
+    const todos = doc.getElementById('todo').value
+    for (const todo of todos) {
       //input value
       inputList = [
         ...inputList,
         {
-          type: 'create',
-          todo: {
-            id: listId.current,
-            text: value,
-            done: false,
-          },
+          id: listId.current,
+          text: todo,
+          done: false,
         },
       ]
       listId.current += 1
-      setOpen(false)
-      setValue('')
-    },
-    [value]
+      setOpen(open)
+    }
+    console.log(inputList)
+  }
+
+  const leftTask = useMemo(
+    () => <div className={todo.task}>{inputList.length}</div>,
+    [inputList]
   )
 
   return (
-    <div className="absolute inset-x-0 bottom-0">
-      {open ? (
-        <>
-          <form className={todo.inputForm} onSubmit={onSubmit}>
-            <input
-              className={todo.inputField}
-              // onChange={onChange}
-              // value={value}
-              placeholder="Write what to do, and Press the Enter"
-            />
-          </form>
-          <button className={todo.xBtn} onClick={onToggle}>
+    <>
+      {/* {leftTask} */}
+      <TodoItem inputList={inputList} />
+      <div className="absolute inset-x-0 bottom-0">
+        {open ? (
+          <>
+            <form className={todo.inputForm} onSubmit={onSubmit}>
+              <input
+                id="todo"
+                className={todo.inputField}
+                placeholder="Write what to do, and Press the Enter"
+              />
+            </form>
+            <button className={todo.xBtn} onClick={onToggle}>
+              <MdAdd />
+            </button>
+          </>
+        ) : (
+          <button className={todo.plusBtn} onClick={onToggle}>
             <MdAdd />
           </button>
-        </>
-      ) : (
-        <button className={todo.plusBtn} onClick={onToggle}>
-          <MdAdd />
-        </button>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   )
 }
 
