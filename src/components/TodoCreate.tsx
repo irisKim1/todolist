@@ -22,19 +22,17 @@ const TodoCreate = () => {
     e.preventDefault()
     const doc = document as any
     const todos = doc.getElementById('todo').value
-    for (const todo of todos) {
-      //input value
-      inputList = [
-        ...inputList,
-        {
-          id: listId.current,
-          text: todo,
-          done: false,
-        },
-      ]
-      listId.current += 1
-      setOpen(open)
-    }
+    //input value
+    inputList = [
+      ...inputList,
+      {
+        id: listId.current,
+        text: todos,
+        done: false,
+      },
+    ]
+    listId.current += 1
+    setOpen(open)
     console.log(inputList)
   }
 
@@ -46,12 +44,14 @@ const TodoCreate = () => {
   return (
     <>
       {/* {leftTask} */}
-      <TodoItem inputList={inputList} />
+      {inputList.length && <TodoItem inputList={inputList} />}
+
       <div className="absolute inset-x-0 bottom-0">
         {open ? (
           <>
             <form className={todo.inputForm} onSubmit={onSubmit}>
               <input
+                autoFocus
                 id="todo"
                 className={todo.inputField}
                 placeholder="Write what to do, and Press the Enter"
