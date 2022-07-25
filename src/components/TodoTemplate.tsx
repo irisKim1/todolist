@@ -1,10 +1,6 @@
 import todo from './Todo.module.css'
 
 const TodoTemplate = ({ children }: any) => {
-  return (
-    <body>
-      <div className={todo.template_box}>{children}</div>
-    </body>
-  )
+  return <div className={todo.template_box}>{children}</div>
 }
 export default TodoTemplate

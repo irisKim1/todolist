@@ -30,7 +30,7 @@
   font-size: 20px;
   color: #343a40;
   
-  padding-top: 48px;
+  padding-top: 20px;
   padding-left: 32px;
   padding-right: 32px;
   padding-bottom: 24px;
@@ -156,9 +156,6 @@
   padding-bottom: 12px;
   }
 
-.itemBlock:hover {
-    display: initial;
-  }
 
 .nonCheckBtn {
   width: 32px;
