@@ -22,7 +22,7 @@
   text-align: center;
   background: #ffffff;
   font-weight: 800;
-  color: rgb(0, 182, 142);
+  color: rgb(21, 210, 169);
 }
 
 .head {
@@ -30,10 +30,10 @@
   font-size: 20px;
   color: #343a40;
   
-  padding-top: 20px;
+  padding-top: 5px;
   padding-left: 32px;
   padding-right: 32px;
-  padding-bottom: 24px;
+  padding-bottom: 14px;
   border-bottom: 1px solid #e9ecef;
 }
 
@@ -45,9 +45,11 @@
 }
 
 .task{
-   color: #20c997;
-  font-size: 18px;
-  margin-top: 40px;
+  
+  color: #20c997;
+  font-size: 17px;
+  margin-top: 0px;
+  margin-bottom: 5px;
   font-weight: bold;
 }
 
@@ -145,6 +147,7 @@
   padding: 20px 32px;
   padding-bottom: 48px;
   overflow-y: auto;
+  
 }
 
 
@@ -158,8 +161,8 @@
 
 
 .nonCheckBtn {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 16px;
   border: 1px solid #ced4da;
   font-size: 24px;
@@ -171,8 +174,8 @@
 }
 
 .checkBtn {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 16px;
   border: 1px solid #ced4da;
   font-size: 24px;
@@ -187,13 +190,13 @@
 
 .nonText {
   flex: 1;
-  font-size: 21px;
+  font-size: 20px;
   color: #495057;
 }
 
 .chkedText {
   flex: 1;
-  font-size: 21px;
+  font-size: 20px;
   color: #ced4da;
 
 }

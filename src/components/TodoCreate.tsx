@@ -26,48 +26,58 @@ const TodoCreate = () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault()
-    setInputList([
-      ...inputList,
-      {
-        id: listId.current,
-        text: item,
-        done: false,
-      },
-    ])
-    listId.current += 1
-    console.log(inputList)
 
     if (!item) {
       alert('입력해주세요.')
     } else {
+      setInputList([
+        ...inputList,
+        {
+          id: listId.current,
+          text: item,
+          done: false,
+        },
+      ])
+      listId.current += 1
+
       setItem('')
     }
   }
 
+  // useCallback(() => {
+  //   const taskLength = inputList.filter((item) => !item.done).length
+  //   undoneTasks.current += taskLength
+  // }, [inputList])
+
   return (
-    <div className="absolute inset-x-0 bottom-0">
-      {inputList.length && <TodoList inputList={inputList} />}
-      {open ? (
-        <>
-          <form className={todo.inputForm} onSubmit={onSubmit}>
-            <input
-              autoFocus
-              className={todo.inputField}
-              onChange={handleChange}
-              value={item}
-              placeholder="Write what to do, and Press the Enter"
-            />
-          </form>
-          <button className={todo.xBtn} onClick={onPlusToggle}>
+    <>
+      {inputList.length > 0 && (
+        <TodoList inputList={inputList} setInputList={setInputList} />
+      )}
+
+      <div className="absolute inset-x-0 bottom-0">
+        {open ? (
+          <>
+            <form className={todo.inputForm} onSubmit={onSubmit}>
+              <input
+                autoFocus
+                className={todo.inputField}
+                onChange={handleChange}
+                value={item}
+                placeholder="Write what to do, and Press the Enter"
+              />
+            </form>
+            <button className={todo.xBtn} onClick={onPlusToggle}>
+              <MdAdd />
+            </button>
+          </>
+        ) : (
+          <button className={todo.plusBtn} onClick={onPlusToggle}>
             <MdAdd />
           </button>
-        </>
-      ) : (
-        <button className={todo.plusBtn} onClick={onPlusToggle}>
-          <MdAdd />
-        </button>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   )
 }
 
