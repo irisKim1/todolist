@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { MdAdd } from 'react-icons/md'
 import todo from './Todo.module.css'
 import TodoList from './TodoList'
@@ -44,10 +44,7 @@ const TodoCreate = () => {
     }
   }
 
-  // useCallback(() => {
-  //   const taskLength = inputList.filter((item) => !item.done).length
-  //   undoneTasks.current += taskLength
-  // }, [inputList])
+
 
   return (
     <>
