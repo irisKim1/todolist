@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { MdAdd } from 'react-icons/md'
 import todo from './Todo.module.css'
 import TodoList from './TodoList'
@@ -43,8 +43,6 @@ const TodoCreate = () => {
       setItem('')
     }
   }
-
-
 
   return (
     <>
